@@ -1,6 +1,12 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import socketIOClient from 'socket.io-client';
+const socket = socketIOClient('http://localhost:3030');
+
+socket.on('user-connected', data => {
+  console.log(data);
+})
 
 function App() {
   return (
