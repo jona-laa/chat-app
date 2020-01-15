@@ -1,7 +1,8 @@
 import React from 'react';
-// import logo from './logo.svg';
+import { BrowserRouter } from "react-router-dom";
 import './App.css';
 import Header from './components/Header';
+import Chat from './components/ChatPage'
 import socketIOClient from 'socket.io-client';
 
 const socket = socketIOClient('http://localhost:3030');
@@ -12,9 +13,14 @@ socket.on('user-connected', data => {
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Header />
+        <section className="App-main">
+          <Chat />
+        </section>
+      </div>
+    </BrowserRouter>
   );
 }
 

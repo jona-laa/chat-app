@@ -1,39 +1,130 @@
 @import url('https://fonts.googleapis.com/css?family=Lobster&display=swap');
 
-.App {
-  text-align: center;
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
 }
 
+html {
+    font-size: 10px;
+}
+
+/* Header */
 .App-header {
   background-color: #282c34;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
+  height: 100px;
 }
 
 .App-logo {
-  /* animation: App-logo-spin infinite 20s linear; */
-  max-height: 100px;
+  max-height: 70px;
+}
+
+.trademark {
+  font-size: 1rem;
+  position: relative;
+  bottom: 15px;
+  left: 2px;
+}
+
+.App-header div {
+  display: flex;
+  flex-direction: column;
 }
 
 .App-name {
-  font-size: 28px;
+  font-size: 2.8rem;
   font-family: 'Lobster';
 }
 
 .App-tagline {
-  font-size: 14px;
+  font-size: 1.4rem;
   font-family: 'Lobster';
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+/* APP MAIN */
+.App-main {
+  height: calc(100vh - 100px);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/* CHAT */
+.chat-container {
+  width: 90%;
+  max-width: 1200px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 10px 0 10px;
+}
+
+#chat-messages {
+  width: 100%;
+  height: 100%;
+  margin: 0 0 10px;
+  background-color: #b7bfd1;
+}
+
+#chat-form {
+  width: 100%;
+  align-self: flex-end;
+  justify-self: flex-end;
+  overflow: hidden;
+}
+
+#chat-form span {
+  display: block;
+  overflow: hidden;
+  padding-right:10px;
+}
+
+#chat-input {
+  width: 100%;
+  line-height: 30px;
+  font-size: 1.6rem;
+  padding: 0px 10px;
+  box-sizing: border-box;
+  border-radius: 3px;
+}
+
+#chat-input:focus {
+  outline:0;
+}
+
+#chat-send-button {
+  float: right;
+  background-color: #3E99A8;
+  color: #f7f7f7;
+  width: 50px;
+  line-height: 30px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  border-radius: 3px;
 }
