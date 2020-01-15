@@ -1,12 +1,18 @@
 const io = require('socket.io')(3030);
 
 io.on('connection', socket => {
-    socket.emit('user-connected', 'User connected.');
+    socket.on('user-connected', message => {
+        socket.broadcast.emit('connected', message);
+    });
     console.log("New client connected");
-    
+
     socket.on("disconnect", () => {
-        console.log("Client disconnected");
         socket.emit('user-disconnected', 'User disconnected.');
+        console.log("Client disconnected");
+    });
+
+    socket.on('send-message', message => {
+        socket.broadcast.emit('chat-message', message)
     });
 });
 
