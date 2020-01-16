@@ -1,0 +1,34 @@
+.App-header {
+  background-color: #282c34;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  height: 100px;
+}
+
+.App-logo {
+  max-height: 70px;
+}
+
+.trademark {
+  font-size: 1rem;
+  position: relative;
+  bottom: 15px;
+  left: 2px;
+}
+
+.App-header div {
+  display: flex;
+  flex-direction: column;
+}
+
+.App-name {
+  font-size: 2.8rem;
+  font-family: 'Lobster';
+}
+
+.App-tagline {
+  font-size: 1.4rem;
+  font-family: 'Lobster';
+}

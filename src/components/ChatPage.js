@@ -5,16 +5,17 @@ const socket = socketIOClient('http://localhost:3030');
 
 const Chat = () => {
     useEffect(() => {
-        appendChatMessage('You connected.');
-        socket.emit('user-connected', 'Another user connected');
+        const username = prompt('What is your name?');
+        appendChatMessage(`Welcome, ${username}!`);
+        socket.emit('connecting-user', username);
     })
     
-    socket.on('connected', data => {
-        appendChatMessage(data);
+    socket.on('user-connected', username => {
+        appendChatMessage(`${username} connected.`);
     })
     
     socket.on('chat-message', data => {
-        appendChatMessage(data);
+        appendChatMessage(`${data.name}: ${data.message}`);
     })
     
     
@@ -35,6 +36,7 @@ const Chat = () => {
     
     const sendMessage = (msg) => {
         const message = document.querySelector('#chat-input').value;
+        appendChatMessage(`Me: ${message}`);
         socket.emit('send-message', message);
         emptyMessageInput();
     }
