@@ -6,12 +6,13 @@ io.on('connection', socket => {
     socket.on('connecting-user', username => {
         connectedUsers[socket.id] = username;
         socket.broadcast.emit('user-connected', username);
-        // console.log("New client connected");
+        console.log(connectedUsers);
     });
 
     socket.on("disconnect", () => {
-        socket.emit('user-disconnected', 'User disconnected.');
-        // console.log("Client disconnected");
+        socket.broadcast.emit('user-disconnected', connectedUsers[socket.id]);
+        delete connectedUsers[socket.id]
+        console.log(connectedUsers);
     });
 
     socket.on('send-message', message => {

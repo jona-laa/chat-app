@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import socketIOClient from 'socket.io-client';
 
-const socket = socketIOClient('http://localhost:3030');
+const socket = socketIOClient('http://localhost:4200');
 
 const Chat = () => {
     useEffect(() => {
@@ -13,11 +13,14 @@ const Chat = () => {
     socket.on('user-connected', username => {
         appendChatMessage(`${username} connected.`);
     })
-    
-    socket.on('chat-message', data => {
-        appendChatMessage(`${data.name}: ${data.message}`);
+
+    socket.on('user-disconnected', username => {
+        appendChatMessage(`${username} disconnected.`);
     })
     
+    socket.on('chat-message', data => {
+        appendChatMessage(`${data.name}: ${data.message}`, 'remote-client');
+    })
     
     const preventReload = e => {
         e.preventDefault();
@@ -27,16 +30,16 @@ const Chat = () => {
         document.querySelector('#chat-input').value = '';
     }
     
-    const appendChatMessage = (message) => {
+    const appendChatMessage = (message, className) => {
         const messageEl = document.createElement('span');
-        messageEl.className = 'chat-message';
+        messageEl.className = `chat-message ${className}`;
         messageEl.innerText = message;
         document.querySelector('#chat-board').append(messageEl);
     }
     
     const sendMessage = (msg) => {
         const message = document.querySelector('#chat-input').value;
-        appendChatMessage(`Me: ${message}`);
+        appendChatMessage(`Me: ${message}`, 'local-client');
         socket.emit('send-message', message);
         emptyMessageInput();
     }
