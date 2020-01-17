@@ -24,7 +24,7 @@
   display: block;
   font-size: 1.6rem;
   font-family: 'Courier New', Courier, monospace;
-  border-radius: 10px;
+  border-radius: 20px;
   padding: 10px 15px;
   margin: 5px;
   max-width: 500px;
@@ -33,7 +33,6 @@
 .local-client {
   background-color: #282c34;
   color: #f7f7f7;
-  max-width: 500px;
   align-self: flex-end;
 }
 

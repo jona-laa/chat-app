@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react';
 import socketIOClient from 'socket.io-client';
+import { useSelector } from 'react-redux';
 
 const socket = socketIOClient('http://localhost:4200');
 
 const Chat = () => {
+    const loggedIn = useSelector(state => state.login);
+
     useEffect(() => {
-        const username = prompt('What is your name?');
-        createMessage(`Welcome, ${username}!`);
-        socket.emit('connecting-user', username);
+        createMessage(`Welcome, ${loggedIn}!`);
+        socket.emit('connecting-user', loggedIn);
     })
 
     socket.on('user-connected', username => {

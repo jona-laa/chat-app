@@ -1,15 +1,19 @@
-import React, { useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import { setLogin } from '../redux/actions/login';
 
 
 const Login = () => {
-    const loggedIn = useSelector(state => state.login);
     const dispatch = useDispatch();
 
     const updateLogin = (resStatus) => {
         console.log(resStatus);
-        resStatus === 200 ? dispatch(setLogin(!loggedIn)) : console.log('yikes');
+        const usernameInput = document.querySelector('#login-form-input').value;
+        if (resStatus === 200) {
+            console.log('yikes');
+        } else {
+            dispatch(setLogin(usernameInput));
+        }
     }
 
     const fetchUser = () => {
@@ -17,8 +21,6 @@ const Login = () => {
         fetch(`http://localhost:4200/users/${usernameInput}`)
             .then(res => updateLogin(res.status));
     }
-
-
 
     const preventReload = e => {
         e.preventDefault();

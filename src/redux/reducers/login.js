@@ -1,4 +1,4 @@
-const initState = false;
+const initState = null;
 
 export const loginReducer = (state = initState, action) => {
     switch (action.type) {

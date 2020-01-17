@@ -7,13 +7,12 @@ import { useSelector } from 'react-redux';
 
 function App() {
   const loggedIn = useSelector(state => state.login);
-  console.log(loggedIn);
 
   return (
     <div className="App">
       <Header />
       <section className="App-main">
-        {loggedIn ? <Chat /> : <Login />}
+        {loggedIn !== null ? <Chat /> : <Login />}
         {/* {loggedIn ? <Login /> : <Chat />} */}
       </section>
     </div>
