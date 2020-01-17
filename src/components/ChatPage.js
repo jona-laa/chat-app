@@ -6,40 +6,54 @@ const socket = socketIOClient('http://localhost:4200');
 const Chat = () => {
     useEffect(() => {
         const username = prompt('What is your name?');
-        appendChatMessage(`Welcome, ${username}!`);
+        createMessage(`Welcome, ${username}!`);
         socket.emit('connecting-user', username);
     })
-    
+
     socket.on('user-connected', username => {
-        appendChatMessage(`${username} connected.`);
+        createMessage(`${username} connected.`);
     })
 
     socket.on('user-disconnected', username => {
-        appendChatMessage(`${username} disconnected.`);
+        createMessage(`${username} disconnected.`);
     })
-    
+
     socket.on('chat-message', data => {
-        appendChatMessage(`${data.name}: ${data.message}`, 'remote-client');
+        createMessage(`${data.name}: ${data.message}`, 'remote-client');
     })
-    
+
     const preventReload = e => {
         e.preventDefault();
     }
-    
+
     const emptyMessageInput = () => {
         document.querySelector('#chat-input').value = '';
     }
-    
-    const appendChatMessage = (message, className) => {
+
+    const autoScrollWindow = () => {
+        const chatBoard = document.querySelector('#chat-board');
+        chatBoard.maxScrollTop = chatBoard.scrollHeight - chatBoard.offsetHeight;
+
+        if (chatBoard.maxScrollTop - chatBoard.scrollTop <= chatBoard.offsetHeight) {
+            chatBoard.scrollTop = chatBoard.scrollHeight;
+        }
+    };
+
+    const createMessage = (message, className) => {
         const messageEl = document.createElement('span');
         messageEl.className = `chat-message ${className}`;
         messageEl.innerText = message;
-        document.querySelector('#chat-board').append(messageEl);
+        appendChatMessage(messageEl);
     }
-    
+
+    const appendChatMessage = (message) => {
+        document.querySelector('#chat-board').append(message);
+        autoScrollWindow();
+    }
+
     const sendMessage = (msg) => {
         const message = document.querySelector('#chat-input').value;
-        appendChatMessage(`Me: ${message}`, 'local-client');
+        createMessage(`Me: ${message}`, 'local-client');
         socket.emit('send-message', message);
         emptyMessageInput();
     }
@@ -50,7 +64,7 @@ const Chat = () => {
             </div>
             <form id="chat-form" onSubmit={preventReload}>
                 <button type="submit" id="chat-send-button" onClick={sendMessage}>Send</button>
-                <span><input type="text" id="chat-input" placeholder="write a message" /></span>
+                <span><input type="text" id="chat-input" placeholder="write a message" autoFocus /></span>
             </form>
         </div>
     )
