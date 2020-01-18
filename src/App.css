@@ -44,10 +44,35 @@ html {
   background-color: rgba(255, 255, 255, 0.9);
 }
 
+.button {
+  background-color: #3E99A8;
+  color: #f7f7f7;
+  line-height: 30px;
+  font-size: 1.6rem;
+  font-weight: bold;
+  border-radius: 5px;
+  border: none;
+  font-family: 'Lobster';
+}
+
+button:hover {
+  box-shadow: 0px 0px 5px gray;
+}
+
+.text-input {
+  line-height: 35px;
+  font-size: 1.6rem;
+  padding: 0px 10px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  background-color: #F2F2F2;
+  font-family: 'Courier New', Courier, monospace;
+}
+
 /* CHAT */
 .chat-container {
   width: 90%;
-  max-width: 1200px;
+  max-width: 1000px;
   height: 100%;
   display: flex;
   flex-direction: column;

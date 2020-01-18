@@ -65,8 +65,8 @@ const Chat = () => {
             <div id="chat-board">
             </div>
             <form id="chat-form" onSubmit={preventReload}>
-                <button type="submit" id="chat-send-button" onClick={sendMessage}>Send</button>
-                <span><input type="text" id="chat-input" placeholder="write a message" autoFocus /></span>
+                <button type="submit" className="button" id="chat-send-button" onClick={sendMessage}>Send</button>
+                <span><input type="text" className="text-input" id="chat-input" placeholder="write a message" autoFocus /></span>
             </form>
         </div>
     )
