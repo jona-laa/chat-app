@@ -55,9 +55,11 @@ const Chat = () => {
 
     const sendMessage = (msg) => {
         const message = document.querySelector('#chat-input').value;
-        createMessage(`Me: ${message}`, 'local-client');
-        socket.emit('send-message', message);
-        emptyMessageInput();
+        if (message !== '') {
+            createMessage(`Me: ${message}`, 'local-client');
+            socket.emit('send-message', message);
+            emptyMessageInput();
+        }
     }
 
     return (
