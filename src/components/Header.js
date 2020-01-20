@@ -1,10 +1,7 @@
 import React from 'react';
 import logo from '../logo.png';
-import { useDispatch, useSelector } from 'react-redux';
 
 const Header = () => {
-    const loggedIn = useSelector(state => state.login);
-
     return (
         <header className='App-header'>
             <img src={logo} className='App-logo' alt='logotype' />

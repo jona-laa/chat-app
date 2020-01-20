@@ -2,8 +2,9 @@ import React, { useEffect } from 'react';
 import socketIOClient from 'socket.io-client';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLogin } from '../redux/actions/login';
+import { connectedSFX, messageSFX } from '../sounds/chatSFX';
 
-const socket = socketIOClient('http://localhost:4200');
+const socket = socketIOClient('http://localhost:4200/');
 
 const Chat = () => {
     const dispatch = useDispatch();
@@ -17,6 +18,7 @@ const Chat = () => {
 
     socket.on('user-connected', username => {
         createMessage(`${username} connected.`);
+        connectedSFX.play();
     })
 
     socket.on('user-disconnected', username => {
@@ -25,10 +27,12 @@ const Chat = () => {
 
     socket.on('chat-message', data => {
         createMessage(`${data.name}: ${data.message}`, 'remote-client');
+        messageSFX.play();
     })
 
     const disconnect = () => {
-        // socket.disconnect();
+        socket.removeAllListeners()
+        socket.close();
         dispatch(setLogin(null));
     };
 
@@ -57,10 +61,10 @@ const Chat = () => {
     }
 
     const appendChatMessage = (message) => {
-        if (document.querySelector('#chat-board')){
+        if (document.querySelector('#chat-board')) {
             document.querySelector('#chat-board').append(message);
             autoScrollWindow();
-        } 
+        }
     }
 
     const sendMessage = (msg) => {

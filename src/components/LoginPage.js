@@ -18,10 +18,11 @@ const Login = () => {
 
     const fetchUser = async () => {
         const usernameInput = document.querySelector('#login-form-input').value;
-        
+
         await fetch(`http://localhost:4200/users/${usernameInput}`)
             .then(res => res)
-            .then(async res => updateLogin(res.status, await res.json()));
+            .then(async res => updateLogin(res.status, await res.json()))
+            .catch(err => console.log(err));
     }
 
     const preventReload = e => {
