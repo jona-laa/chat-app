@@ -1,11 +1,11 @@
 import UIfx from 'uifx';
-import chatSound from '../sounds/pling.wav';
+import chatSound from '../sounds/message.wav';
 import connectedSound from '../sounds/connected.mp3';
 
 const messageSFX = new UIfx(
     chatSound,
     {
-        volume: 0.3,
+        volume: 0.1,
         throttleMs: 100
     }
 )

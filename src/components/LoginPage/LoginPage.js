@@ -1,25 +1,25 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { setLogin } from '../redux/actions/login';
-
+import { setLogin } from '../../redux/actions/login';
+import './Login.css';
 
 const Login = () => {
     const dispatch = useDispatch();
-
+    
     const updateLogin = (resStatus, resMsg) => {
-        const usernameInput = document.querySelector('#login-form-input').value;
+        const usernameInput = document.querySelector('#login-form-input');
         if (resStatus === 200) {
-            dispatch(setLogin(usernameInput));
+            dispatch(setLogin(usernameInput.value));
         } else {
-            document.querySelector('#login-form-input').value = '';
-            document.querySelector('#login-form-input').placeholder = resMsg.msg;
+            usernameInput.value = '';
+            usernameInput.placeholder = resMsg.msg;
         }
     }
 
     const fetchUser = async () => {
-        const usernameInput = document.querySelector('#login-form-input').value;
+        const usernameInput = document.querySelector('#login-form-input');
 
-        await fetch(`http://localhost:4200/users/${usernameInput}`)
+        await fetch(`http://localhost:4200/users/${usernameInput.value}`)
             .then(res => res)
             .then(async res => updateLogin(res.status, await res.json()))
             .catch(err => console.log(err));

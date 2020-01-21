@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import socketIOClient from 'socket.io-client';
 import { useDispatch, useSelector } from 'react-redux';
-import { setLogin } from '../redux/actions/login';
-import { connectedSFX, messageSFX } from '../sounds/chatSFX';
+import { setLogin } from '../../redux/actions/login';
+import { connectedSFX, messageSFX } from '../../sounds/chatSFX';
+import './Chat.css'; 
 
 const socket = socketIOClient('http://localhost:4200/');
 
