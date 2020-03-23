@@ -3,7 +3,6 @@ import socketIOClient from 'socket.io-client';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLogin } from '../../redux/actions/login';
 import { connectedSFX, messageSFX } from '../../sounds/chatSFX';
-import './Chat.css';
 
 const socket = socketIOClient('http://localhost:4200/');
 
@@ -17,40 +16,35 @@ const Chat = () => {
     socket.emit('connecting-user', loggedIn);
   });
 
-  socket.on('user-connected', (username: string) => {
+  socket.on('user-connected', (username: string): void => {
     createMessage(`${username} connected.`);
     connectedSFX.play();
   });
 
-  socket.on('user-disconnected', (username: string) => {
+  socket.on('user-disconnected', (username: string): void => {
     createMessage(`${username} disconnected.`);
   });
 
-  socket.on('chat-message', (data: ChatMessage) => {
+  socket.on('chat-message', (data: ChatMessage): void => {
     createMessage(`${data.name}: ${data.message}`, 'remote-client');
     messageSFX.play();
   });
 
-  const disconnect = () => {
+  const disconnect = (): void => {
     socket.removeAllListeners();
     socket.close();
     dispatch(setLogin(null));
   };
 
-  const preventReload = (e: React.FormEvent<HTMLFormElement>) => {
+  const preventReload = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
   };
 
-  const emptyMessageInput = () => {
-    let elem = document.querySelector('#chat-input');
-    if (elem instanceof HTMLInputElement) {
-      elem.value = '';
-    } else {
-      throw new Error('element #test not in document');
-    }
+  const emptyMessageInput = (e: HTMLInputElement): void => {
+      e.value = ''
   };
 
-  const autoScrollWindow = () => {
+  const autoScrollWindow = (): void => {
     const chatBoard = document.querySelector('#chat-board');
     if (chatBoard instanceof HTMLDivElement) {
       chatBoard.scrollTop = chatBoard.scrollHeight - chatBoard.offsetHeight;
@@ -61,27 +55,27 @@ const Chat = () => {
     }
   };
 
-  const createMessage = (message: string, className?: string) => {
-    const messageEl = document.createElement('span');
-    messageEl.className = `chat-message ${className}`;
-    messageEl.innerText = message;
-    appendChatMessage(messageEl);
+  const createMessage = (message: string, className?: string): void => {
+    const msgSpanEl = document.createElement('span');
+    msgSpanEl.className = `chat-message ${className}`;
+    msgSpanEl.innerText = message;
+    appendChatMessage(msgSpanEl);
   };
 
-  const appendChatMessage = (message: HTMLSpanElement) => {
+  const appendChatMessage = (message: HTMLSpanElement): void => {
     if (document.querySelector('#chat-board')) {
       document.querySelector('#chat-board').append(message);
       autoScrollWindow();
     }
   };
-
-  const sendMessage = () => {
-    const message = document.querySelector('#chat-input');
-    if (message instanceof HTMLInputElement) {
-      if (message.value !== '') {
-        createMessage(`Me: ${message.value}`, 'local-client');
-        socket.emit('send-message', message.value);
-        emptyMessageInput();
+  
+  const sendMessage = (): void => {
+    const input = document.querySelector('#chat-input')
+    if (input instanceof HTMLInputElement) {
+      if (input.value !== '') {
+        createMessage(`Me: ${input.value}`, 'local-client');
+        socket.emit('send-message', input.value);
+        emptyMessageInput(input);
       }
     } else {
       throw new Error('element #test not in document');
