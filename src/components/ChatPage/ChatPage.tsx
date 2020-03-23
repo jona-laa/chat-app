@@ -61,14 +61,14 @@ const Chat = () => {
     }
   };
 
-  const createMessage = (message: any, className?: string) => {
+  const createMessage = (message: string, className?: string) => {
     const messageEl = document.createElement('span');
     messageEl.className = `chat-message ${className}`;
     messageEl.innerText = message;
     appendChatMessage(messageEl);
   };
 
-  const appendChatMessage = (message: any) => {
+  const appendChatMessage = (message: HTMLSpanElement) => {
     if (document.querySelector('#chat-board')) {
       document.querySelector('#chat-board').append(message);
       autoScrollWindow();
