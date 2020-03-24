@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react';
 import socketIOClient from 'socket.io-client';
-import { useDispatch, useSelector } from 'react-redux';
-import { setLogin } from '../../redux/actions/login';
+import { useSelector } from 'react-redux';
 import { connectedSFX, messageSFX } from '../../sounds/chatSFX';
+import { LogoutButton } from '../LogoutButton/LogoutButton';
 
 const socket = socketIOClient('http://localhost:4200/');
 
 const Chat = () => {
-  const dispatch = useDispatch();
   const loggedIn = useSelector(state => state.login);
 
   useEffect(() => {
@@ -30,18 +29,12 @@ const Chat = () => {
     messageSFX.play();
   });
 
-  const disconnect = (): void => {
-    socket.removeAllListeners();
-    socket.close();
-    dispatch(setLogin(null));
-  };
-
   const preventReload = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
   };
 
   const emptyMessageInput = (e: HTMLInputElement): void => {
-      e.value = ''
+    e.value = '';
   };
 
   const autoScrollWindow = (): void => {
@@ -68,9 +61,9 @@ const Chat = () => {
       autoScrollWindow();
     }
   };
-  
+
   const sendMessage = (): void => {
-    const input = document.querySelector('#chat-input')
+    const input = document.querySelector('#chat-input');
     if (input instanceof HTMLInputElement) {
       if (input.value !== '') {
         createMessage(`Me: ${input.value}`, 'local-client');
@@ -104,9 +97,7 @@ const Chat = () => {
           />
         </span>
       </form>
-      <button id="disconnect-button" className="button" onClick={disconnect}>
-        Disconnect
-      </button>
+      <LogoutButton socket={socket} />
     </div>
   );
 };
