@@ -32,7 +32,7 @@ export const Login = () => {
     return (
         <div className="login-container">
             <form id="login-form" onSubmit={preventReload}>
-                <input type="text" id="login-form-input" className="text-input" placeholder="Username"></input>
+                <input type="text" id="login-form-input" className="text-input" placeholder="Username" autoFocus></input>
                 <button type="submit" className="button" id="login-form-submit" onClick={fetchUser}>Connect</button>
             </form>
         </div>
