@@ -3,12 +3,12 @@ import socketIOClient from 'socket.io-client';
 import { useSelector } from 'react-redux';
 import { connectedSFX, messageSFX } from '../../sounds/chatSFX';
 import { LogoutButton } from '../LogoutButton/LogoutButton';
-import { ChatForm } from '../ChatForm/ChatForm';
+import { ChatForm } from './ChatForm/ChatForm';
 import './ChatPage.css';
 
 const socket = socketIOClient('http://localhost:4200/');
 
-const Chat = () => {
+export const Chat = () => {
   const loggedIn = useSelector(state => state.login);
 
   useEffect(() => {
@@ -90,5 +90,3 @@ const Chat = () => {
     </div>
   );
 };
-
-export default Chat;

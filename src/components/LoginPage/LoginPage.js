@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { setLogin } from '../../redux/actions/login';
 import './LoginPage.css';
 
-const Login = () => {
+export const Login = () => {
     const dispatch = useDispatch();
     
     const updateLogin = (resStatus, resMsg) => {
@@ -38,5 +38,3 @@ const Login = () => {
         </div>
     )
 }
-
-export default Login;
