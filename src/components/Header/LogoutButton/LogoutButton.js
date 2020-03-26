@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
-import { setLogin } from '../../redux/actions/login';
+import { setLogin } from '../../../redux/actions/login';
+import './LogoutButton.css';
 
 export const LogoutButton = ({ socket }) => {
     const dispatch = useDispatch();

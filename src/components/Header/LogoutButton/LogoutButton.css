@@ -1,0 +1,25 @@
+#disconnect-button {
+  position: absolute;
+  right: 12.5px;
+  top: 20px;
+}
+
+#disconnect-button:hover {
+  cursor: pointer;
+}
+
+#disconnect-button:active {
+  opacity: 0.75;
+}
+
+#disconnect-button:focus{
+  outline:0;
+}
+
+
+
+@media screen and (max-width: 375px) {
+  #disconnect-button {
+    top: 10px;
+  }
+}

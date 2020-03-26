@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import socketIOClient from 'socket.io-client';
 import { useSelector } from 'react-redux';
 import { connectedSFX, messageSFX } from '../../sounds/chatSFX';
-import { LogoutButton } from '../LogoutButton/LogoutButton';
+import { LogoutButton } from '../Header/LogoutButton/LogoutButton';
 import { ChatForm } from './ChatForm/ChatForm';
 import './ChatPage.css';
 
