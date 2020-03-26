@@ -1,9 +1,9 @@
 .login-feedback {
+    color: red;
+    font-size: 1.6rem;
+    margin-bottom: 10px;
     max-width: 200px;
     text-align: center;
-    margin-bottom: 10px;
-    font-size: 1.6rem;
-    color: red;
 }
 
 #login-form {
@@ -13,8 +13,8 @@
 }
 
 #login-form-input {
-    text-align: center;
     border: none;
+    text-align: center;
 }
 
 #login-form-submit {

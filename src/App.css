@@ -13,43 +13,43 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
+	border: 0;
+  box-sizing: border-box;
+	font: inherit;
+	font-size: 100%;
   margin: 0;
 	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
   vertical-align: baseline;
-  box-sizing: border-box;
 }
 
 html {
-    font-size: 10px;
-    font-family: 'Times New Roman', Times, serif;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 10px;
 }
 
 .App {
-  background: url('../src/logo.png') center no-repeat;
+  background: url('./logo.png') center no-repeat;
 }
 
 .App-main {
-  height: calc(100vh - 100px);
-  width: 100%;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.9);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  height: calc(100vh - 100px);
   justify-content: center;
-  background-color: rgba(255, 255, 255, 0.9);
+  width: 100%;
 }
 
 .button {
   background-color: #3E99A8;
-  color: #f7f7f7;
-  line-height: 30px;
-  font-size: 1.6rem;
-  font-weight: bold;
   border-radius: 5px;
   border: none;
+  color: #f7f7f7;
   font-family: 'Lobster';
+  font-size: 1.6rem;
+  font-weight: bold;
+  line-height: 30px;
 }
 
 button:hover {
@@ -57,23 +57,31 @@ button:hover {
 }
 
 .text-input {
-  line-height: 35px;
-  font-size: 1.6rem;
-  padding: 0px 10px;
+  background-color: #F2F2F2;
   box-sizing: border-box;
   border-radius: 20px;
-  background-color: #F2F2F2;
   font-family: 'Courier New', Courier, monospace;
+  font-size: 1.6rem;
+  line-height: 35px;
+  padding: 0px 10px;
 }
 
 /* CHAT */
 .chat-container {
-  width: 90%;
-  max-width: 1000px;
-  height: 100%;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  height: 100%;
   justify-content: flex-end;
+  max-width: 1000px;
   padding: 10px 0 10px;
+  width: 90%;
+}
+
+
+
+@media screen and (max-width: 375px) {
+  .App-main {
+    height: calc(100vh - 80px);
+  }
 }

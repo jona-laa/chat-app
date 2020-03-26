@@ -1,10 +1,10 @@
 .App-header {
-  background-color: #282c34;
-  display: flex;
   align-items: center;
-  justify-content: center;
+  background-color: #282c34;
   color: white;
+  display: flex;
   height: 100px;
+  justify-content: center;
 }
 
 .App-logo {
@@ -12,10 +12,10 @@
 }
 
 .trademark {
-  font-size: 1rem;
-  position: relative;
   bottom: 15px;
+  font-size: 1rem;
   left: 2px;
+  position: relative;
 }
 
 .App-header div {
@@ -24,31 +24,23 @@
 }
 
 .App-name {
-  font-size: 2.8rem;
   font-family: 'Lobster';
+  font-size: 2.8rem;
   user-select: none;
 }
 
 .App-tagline {
-  font-size: 1.3rem;
   font-family: 'Lobster';
+  font-size: 1.3rem;
   user-select: none;
 }
 
-#disconnect-button {
-  position: absolute;
-  top: 20px;
-  right: 12.5px;
-}
-
-#disconnect-button:hover {
-    cursor: pointer;
-}
-
-#disconnect-button:active {
-  opacity: 0.75;
-}
-
-#disconnect-button:focus{
-  outline:0;
+@media screen and (max-width: 375px) {
+  .App-header {
+    height: 80px;
+  }
+  
+  .App-logo {
+    max-height: 60px;
+  }
 }
