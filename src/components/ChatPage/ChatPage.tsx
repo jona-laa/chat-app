@@ -3,7 +3,8 @@ import socketIOClient from 'socket.io-client';
 import { useSelector } from 'react-redux';
 import { connectedSFX, messageSFX } from '../../sounds/chatSFX';
 import { LogoutButton } from '../LogoutButton/LogoutButton';
-import { SendButton } from '../SendButton/SendButton';
+import { ChatForm } from '../ChatForm/ChatForm';
+import './ChatPage.css';
 
 const socket = socketIOClient('http://localhost:4200/');
 
@@ -72,25 +73,19 @@ const Chat = () => {
         emptyMessageInput(input);
       }
     } else {
-      throw new Error('element #test not in document');
+      throw new Error('element #chat-input not in document');
     }
+  };
+
+  const props = {
+    preventReload,
+    sendMessage
   };
 
   return (
     <div className="chat-container">
       <div id="chat-board"></div>
-      <form id="chat-form" onSubmit={preventReload}>
-        <SendButton sendMessage={sendMessage} />
-        <span>
-          <input
-            type="text"
-            className="text-input"
-            id="chat-input"
-            placeholder="write a message"
-            autoFocus
-          />
-        </span>
-      </form>
+      <ChatForm {...props} />
       <LogoutButton socket={socket} />
     </div>
   );

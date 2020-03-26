@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { setLogin } from '../../redux/actions/login';
+import './LoginPage.css';
 
 const Login = () => {
     const dispatch = useDispatch();

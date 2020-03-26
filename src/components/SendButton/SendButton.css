@@ -1,0 +1,16 @@
+#chat-send-button {
+  float: right;
+  width: 100px;
+}
+
+#chat-send-button:hover {
+  cursor: pointer;
+}
+
+#chat-send-button:active {
+  opacity: 0.75;
+}
+
+#chat-send-button:focus {
+  outline:0;
+}

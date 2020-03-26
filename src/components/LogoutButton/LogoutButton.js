@@ -5,7 +5,6 @@ import { setLogin } from '../../redux/actions/login';
 export const LogoutButton = ({ socket }) => {
     const dispatch = useDispatch();
 
-
     const disconnect = () => {
         socket.removeAllListeners();
         socket.close();
@@ -13,7 +12,8 @@ export const LogoutButton = ({ socket }) => {
     };
 
     return (
-        <button id="disconnect-button" className="button" onClick={disconnect}>
+        <button id="disconnect-button" className="button"
+            onClick={disconnect}>
             Disconnect
         </button>
     )

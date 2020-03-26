@@ -78,9 +78,6 @@ button:hover {
   width: 90%;
 }
 
-@import url('./components/Header/Header.css');
-@import url('./components/LoginPage/LoginPage.css');
-@import url('./components/ChatPage/Chat.css');
 
 
 @media screen and (max-width: 375px) {
