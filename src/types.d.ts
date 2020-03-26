@@ -3,9 +3,15 @@ interface ChatMessage {
     name: string
 }
 
-const SET_LOGIN = 'SET_LOGIN'
+interface ChatFormProps {
+    preventReload: (e: React.FormEvent<HTMLFormElement>) =>  void
+    sendMessage: () => void
+}
 
-// Redux State Types
+
+
+// Redux
+const SET_LOGIN = 'SET_LOGIN'
 interface LoginAction {
     type: typeof SET_LOGIN
     login: string | null
