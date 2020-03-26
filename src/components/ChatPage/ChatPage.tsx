@@ -77,7 +77,7 @@ export const Chat = () => {
     }
   };
 
-  const props = {
+  const props: ChatFormProps = {
     preventReload,
     sendMessage
   };
