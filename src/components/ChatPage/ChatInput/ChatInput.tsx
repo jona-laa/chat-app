@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './ChatInput.css';
 
-export const ChatInput = () => {
+export const ChatInput: React.FC = (): JSX.Element => {
   const inputElement = React.useRef<HTMLInputElement>(null);
 
   useEffect(() => {
