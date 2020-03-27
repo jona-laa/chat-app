@@ -1,6 +1,6 @@
 import React from 'react';
-import { SendButton } from '../SendButton/SendButton';
-import { ChatInput } from '../ChatInput/ChatInput';
+import { SendButton } from './SendButton/SendButton';
+import { ChatInput } from './ChatInput/ChatInput';
 
 export const ChatForm: React.FC<ChatFormProps> = ({
   preventReload,
