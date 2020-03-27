@@ -35,18 +35,12 @@ export const Chat = () => {
     e.preventDefault();
   };
 
-  const emptyMessageInput = (e: HTMLInputElement): void => {
-    e.value = '';
-  };
-
-  const autoScrollWindow = (): void => {
-    const chatBoard = document.querySelector('#chat-board');
-    if (chatBoard instanceof HTMLDivElement) {
-      chatBoard.scrollTop = chatBoard.scrollHeight - chatBoard.offsetHeight;
-
-      if (chatBoard.scrollTop - chatBoard.scrollTop <= chatBoard.offsetHeight) {
-        chatBoard.scrollTop = chatBoard.scrollHeight;
-      }
+  const sendMessage = (): void => {
+    const input: HTMLInputElement = document.querySelector('#chat-input');
+    if (input.value !== '') {
+      createMessage(`Me: ${input.value}`, 'local-client');
+      socket.emit('send-message', input.value);
+      emptyMessageInput(input);
     }
   };
 
@@ -64,16 +58,15 @@ export const Chat = () => {
     }
   };
 
-  const sendMessage = (): void => {
-    const input = document.querySelector('#chat-input');
-    if (input instanceof HTMLInputElement) {
-      if (input.value !== '') {
-        createMessage(`Me: ${input.value}`, 'local-client');
-        socket.emit('send-message', input.value);
-        emptyMessageInput(input);
-      }
-    } else {
-      throw new Error('element #chat-input not in document');
+  const emptyMessageInput = (e: HTMLInputElement): void => {
+    e.value = '';
+  };
+
+  const autoScrollWindow = (): void => {
+    const chatBoard: HTMLDivElement = document.querySelector('#chat-board');
+    chatBoard.scrollTop = chatBoard.scrollHeight - chatBoard.offsetHeight;
+    if (chatBoard.scrollTop - chatBoard.scrollTop <= chatBoard.offsetHeight) {
+      chatBoard.scrollTop = chatBoard.scrollHeight;
     }
   };
 
