@@ -77,7 +77,7 @@ export const Chat = () => {
     }
   };
 
-  const props: ChatFormProps = {
+  const ChatFormProps: ChatFormProps = {
     preventReload,
     sendMessage
   };
@@ -85,7 +85,7 @@ export const Chat = () => {
   return (
     <div className="chat-container">
       <div id="chat-board"></div>
-      <ChatForm {...props} />
+      <ChatForm {...ChatFormProps} />
       <LogoutButton socket={socket} />
     </div>
   );
