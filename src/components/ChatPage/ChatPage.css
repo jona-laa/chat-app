@@ -46,10 +46,3 @@
   background-color: teal;
   color: #f7f7f7;
 }
-
-#chat-form {
-  align-self: flex-end;
-  justify-self: flex-end;
-  overflow: hidden;
-  width: 100%;
-}

@@ -1,0 +1,6 @@
+#chat-form {
+  align-self: flex-end;
+  justify-self: flex-end;
+  overflow: hidden;
+  width: 100%;
+}
