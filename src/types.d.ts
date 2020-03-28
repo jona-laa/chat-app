@@ -8,6 +8,14 @@ interface ChatFormProps {
     sendMessage: () => void
 }
 
+interface UpdateLoginParams {
+    resStatus: number
+    resMsg: ResponseMessage
+}
+
+type ResponseMessage = {
+    msg: string
+}
 
 
 // Redux
