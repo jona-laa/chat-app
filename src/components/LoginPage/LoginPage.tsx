@@ -9,7 +9,6 @@ export const Login: React.FC = (): JSX.Element => {
   const inputElement = React.useRef<HTMLInputElement>(null);
 
   const updateLogin = (resStatus: number, resMsg: ResponseMessage): void => {
-    console.log(typeof resMsg, resMsg)
     if (resStatus === 200) {
       dispatch(setLogin(inputElement.current.value));
     } else {
