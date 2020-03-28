@@ -16,8 +16,6 @@
   outline:0;
 }
 
-
-
 @media screen and (max-width: 375px) {
   #disconnect-button {
     top: 10px;
