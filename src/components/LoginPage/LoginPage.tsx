@@ -8,7 +8,7 @@ export const Login: React.FC = (): JSX.Element => {
 
   const inputElement = React.useRef<HTMLInputElement>(null);
 
-  const updateLogin = (resStatus: number, resMsg: ResponseMessage): void => {
+  const updateLogin = ({ resStatus, resMsg }: UpdateLoginParams): void => {
     if (resStatus === 200) {
       dispatch(setLogin(inputElement.current.value));
     } else {
@@ -20,7 +20,9 @@ export const Login: React.FC = (): JSX.Element => {
   const fetchUser = async () => {
     await fetch(`http://localhost:4200/users/${inputElement.current.value}`)
       .then(res => res)
-      .then(async res => updateLogin(res.status, await res.json()))
+      .then(async res =>
+        updateLogin({ resStatus: res.status, resMsg: await res.json() })
+      )
       .catch(err => console.log(err));
   };
 
