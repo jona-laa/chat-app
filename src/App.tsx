@@ -6,7 +6,8 @@ import { Login } from './components/LoginPage/LoginPage';
 import { useSelector } from 'react-redux';
 
 const App: React.FC = (): JSX.Element => {
-  const loggedIn = useSelector(state => state.login);
+  const loggedIn = useSelector((state: RootState) => state.login);
+
   return (
     <div className="App">
       <Header />

@@ -9,7 +9,7 @@ import './ChatPage.css';
 const socket = socketIOClient('http://localhost:4200/');
 
 export const Chat = () => {
-  const loggedIn = useSelector(state => state.login);
+  const loggedIn = useSelector((state: RootState) => state.login);
 
   useEffect(() => {
     createMessage(`Welcome, ${loggedIn}!`);

@@ -1,3 +1,7 @@
+type RootState = {
+  login: boolean
+}
+
 interface ChatMessage {
     message: string,
     name: string
@@ -20,6 +24,7 @@ type ResponseMessage = {
 
 // Redux
 const SET_LOGIN = 'SET_LOGIN'
+
 interface LoginAction {
     type: typeof SET_LOGIN
     login: string | null
